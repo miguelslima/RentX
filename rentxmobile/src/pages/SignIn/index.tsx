@@ -123,7 +123,7 @@ const SignIn: React.FC = () => {
 
               <TextRemember>Lembrar-me</TextRemember>
             </CheckBoxContainer>
-            <ForgotPasswordButton>
+            <ForgotPasswordButton onPress={() => Alert.alert("Em manutenção")}>
               <TextForgotPassword> Esqueci minha senha</TextForgotPassword>
             </ForgotPasswordButton>
           </TextContainer>

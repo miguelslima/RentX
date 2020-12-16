@@ -5,7 +5,6 @@ interface ContainerProps {
   isFocused: boolean;
   isErrored: boolean;
   isFilled: boolean;
-
 }
 
 export const Container = styled.View<ContainerProps>`
@@ -27,7 +26,7 @@ export const Container = styled.View<ContainerProps>`
       border-color: #c53030;
     `}
 
-    ${(props) =>
+  ${(props) =>
     props.isFilled &&
     css`
       border-color: #207b58;

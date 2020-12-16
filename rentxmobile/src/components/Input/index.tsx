@@ -82,6 +82,7 @@ const Input: React.RefForwardingComponent<InputRef, InputProps> = (
       isFocused={isFocused}
       isErrored={!!error}
     >
+
       <Icon
         name={icon}
         size={20}

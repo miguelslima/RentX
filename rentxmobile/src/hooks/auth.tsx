@@ -59,10 +59,10 @@ const AuthProvider: React.FC = ({ children }) => {
   }, []);
 
   const signIn = useCallback(async ({ email, password }) => {
-    // const response = await api.post("sessions", {
-    //   email,
-    //   password,
-    // });
+    const response = await api.post("sessions", {
+      email,
+      password,
+    });
 
     const { token, user } = response.data;
 
@@ -71,7 +71,7 @@ const AuthProvider: React.FC = ({ children }) => {
       ["@RentX:user", JSON.stringify(user)],
     ]);
 
-    // api.defaults.headers.authorization = `Bearer ${token}`;
+    api.defaults.headers.authorization = `Bearer ${token}`;
 
     setData({ token, user });
   }, []);
