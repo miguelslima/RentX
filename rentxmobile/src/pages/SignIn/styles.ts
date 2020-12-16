@@ -59,10 +59,14 @@ export const TextRemember = styled.Text`
   font-family: "Inter-Regular";
   font-size: 13px;
   line-height: 16px;
+  color: #737380;
 `;
+
+export const ForgotPasswordButton = styled.TouchableOpacity``;
 
 export const TextForgotPassword = styled.Text`
   font-family: "Inter-Regular";
   font-size: 13px;
   line-height: 16px;
+  color: #737380;
 `;

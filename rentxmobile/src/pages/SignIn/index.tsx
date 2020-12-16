@@ -16,6 +16,7 @@ import {
   CheckBoxContainer,
   CheckBox,
   TextRemember,
+  ForgotPasswordButton,
   TextForgotPassword,
 } from "./styles";
 import { useNavigation } from "@react-navigation/native";
@@ -68,7 +69,7 @@ const SignIn: React.FC = () => {
 
       Alert.alert(
         "Erro na autenticação",
-        "Ocorreu um erro ao fazer login, cheque as credenciais."
+        `Ocorreu um erro ${err} ao fazer login, cheque as credenciais.`
       );
     }
   }, []);
@@ -117,11 +118,14 @@ const SignIn: React.FC = () => {
               <CheckBox
                 value={remember}
                 onValueChange={(value) => setRemember(value)}
+                tintColors={{ true: "#c53030", false: "#EDEBF9" }}
               />
 
               <TextRemember>Lembrar-me</TextRemember>
             </CheckBoxContainer>
-            <TextForgotPassword> Esqueci minha senha</TextForgotPassword>
+            <ForgotPasswordButton>
+              <TextForgotPassword> Esqueci minha senha</TextForgotPassword>
+            </ForgotPasswordButton>
           </TextContainer>
         </Form>
 
