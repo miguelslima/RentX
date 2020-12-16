@@ -3,6 +3,7 @@ import { Form } from "@unform/mobile";
 import { FormHandles } from "@unform/core";
 import Icon from "react-native-vector-icons/Feather";
 import Button from "../../components/Button";
+import Input from "../../components/Input";
 import {
   Container,
   KeyboardAvoidingContainer,
@@ -45,8 +46,8 @@ const SignIn: React.FC = () => {
 
         <Form ref={formRef} onSubmit={handleSubmitForm}>
           <InputContainer>
-            <TextInput placeholder="E-mail" />
-            <TextInput placeholder="Senha" />
+            <Input />
+            <Input />
           </InputContainer>
           <TextContainer>
             <Text>Lembrar-me</Text>
