@@ -1,12 +1,15 @@
 import React from "react";
 import { Image, Text, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { useNavigation } from "@react-navigation/native";
 
 import Button from "../../components/Button";
 
 import { Container, WelcomeTitle, WelcomeSubTitle } from "./styles";
 
 const Welcome: React.FC = () => {
+  const navigation = useNavigation();
+
   return (
     <Container>
       <Image
@@ -31,14 +34,14 @@ const Welcome: React.FC = () => {
             text="Login"
             enable
             marginHorizontal={20}
-            onPress={() => {}}
+            onPress={() => navigation.navigate("SignIn")}
           />
           <Button
             style={{ backgroundColor: "#29292e" }}
             text="Cadastro"
             enable
             marginHorizontal={20}
-            onPress={() => {}}
+            onPress={() => navigation.navigate("SignUp")}
           />
         </View>
 

@@ -18,4 +18,5 @@ export const WelcomeSubTitle = styled.Text`
   line-height: 25px;
   text-align: center;
   color: #f4f5f6;
+  margin-top: 16px;
 `;
