@@ -4,20 +4,18 @@ export const Container = styled.View`
   flex: 1;
   background-color: #fff;
   justify-content: space-between;
-
 `;
 
 export const KeyboardAvoidingContainer = styled.KeyboardAvoidingView`
   flex: 1;
-
 `;
 
 export const GoBack = styled.TouchableOpacity`
-padding-horizontal: 32px;
+  padding-horizontal: 32px;
 `;
 
 export const HeaderContainer = styled.View`
-padding-horizontal: 32px;
+  padding-horizontal: 32px;
 `;
 
 export const Title = styled.Text`
@@ -38,7 +36,7 @@ export const Subtitle = styled.Text`
 
 export const InputContainer = styled.View`
   margin-top: 110px;
-  padding-horizontal: 32px;
+  padding-horizontal: 24px;
 `;
 
 export const TextContainer = styled.View`
