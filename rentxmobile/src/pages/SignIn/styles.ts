@@ -1,4 +1,5 @@
 import styled from "styled-components/native";
+import ReactCheckBox from "@react-native-community/checkbox";
 
 export const Container = styled.View`
   flex: 1;
@@ -43,5 +44,25 @@ export const TextContainer = styled.View`
   margin: 34px 0;
   flex-direction: row;
   justify-content: space-between;
-  padding-horizontal: 32px;
+  align-items: center;
+  padding-horizontal: 24px;
+`;
+
+export const CheckBoxContainer = styled.View`
+  flex-direction: row;
+  align-items: center;
+`;
+
+export const CheckBox = styled(ReactCheckBox)``;
+
+export const TextRemember = styled.Text`
+  font-family: "Inter-Regular";
+  font-size: 13px;
+  line-height: 16px;
+`;
+
+export const TextForgotPassword = styled.Text`
+  font-family: "Inter-Regular";
+  font-size: 13px;
+  line-height: 16px;
 `;

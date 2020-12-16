@@ -4,7 +4,8 @@ import FeatherIcon from "react-native-vector-icons/Feather";
 interface ContainerProps {
   isFocused: boolean;
   isErrored: boolean;
-  isFilled: boolean
+  isFilled: boolean;
+
 }
 
 export const Container = styled.View<ContainerProps>`

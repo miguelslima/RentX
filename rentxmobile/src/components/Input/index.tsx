@@ -10,10 +10,12 @@ import { TextInputProps, View } from "react-native";
 import { useField } from "@unform/core";
 
 import { Container, TextInput, Icon } from "./styles";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 interface InputProps extends TextInputProps {
   name: string;
   icon: string;
+  showPassword?: boolean;
   containerStyle?: {};
 }
 
@@ -26,13 +28,14 @@ interface InputRef {
 }
 
 const Input: React.RefForwardingComponent<InputRef, InputProps> = (
-  { name, icon, containerStyle = {}, ...rest },
+  { name, icon, showPassword, containerStyle = {}, ...rest },
   ref
 ) => {
   const inputElementRef = useRef<any>(null);
   const { registerField, defaultValue = "", fieldName, error } = useField(name);
   const inputValueRef = useRef<InpurValueReference>({ value: defaultValue });
 
+  const [show, setShow] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
   const [isFilled, setIsFilled] = useState(false);
 
@@ -51,6 +54,10 @@ const Input: React.RefForwardingComponent<InputRef, InputProps> = (
       inputElementRef.current.focus();
     },
   }));
+
+  const handleShowPassword = useCallback(() => {
+    setShow((state) => !state);
+  }, []);
 
   useEffect(() => {
     registerField<string>({
@@ -78,7 +85,7 @@ const Input: React.RefForwardingComponent<InputRef, InputProps> = (
       <Icon
         name={icon}
         size={20}
-        color={isFocused || isFilled ? "#c53030" : "#7a7a80"}
+        color={isFocused ? "#c53030" : isFilled ? "#207b58" : "#7a7a80"}
       />
 
       <TextInput
@@ -88,11 +95,17 @@ const Input: React.RefForwardingComponent<InputRef, InputProps> = (
         defaultValue={defaultValue}
         onFocus={handleInputFocus}
         onBlur={handleInputBlur}
+        secureTextEntry={showPassword && !show}
         onChangeText={(value) => {
           inputValueRef.current.value = value;
         }}
         {...rest}
       />
+      {showPassword && (
+        <TouchableOpacity onPress={handleShowPassword}>
+          <Icon name={show ? `eye` : `eye-off`} size={20} color="#aeaeb3" />
+        </TouchableOpacity>
+      )}
     </Container>
   );
 };

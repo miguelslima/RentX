@@ -13,6 +13,10 @@ import {
   Subtitle,
   InputContainer,
   TextContainer,
+  CheckBoxContainer,
+  CheckBox,
+  TextRemember,
+  TextForgotPassword,
 } from "./styles";
 import { useNavigation } from "@react-navigation/native";
 import { Alert, Text, TextInput } from "react-native";
@@ -31,6 +35,8 @@ const SignIn: React.FC = () => {
   const passwordInputRef = useRef<TextInput>(null);
 
   const { signIn } = useAuth();
+
+  const [remember, setRemember] = useState(false);
 
   const handleSubmitForm = useCallback(async (data: SignInFormData) => {
     try {
@@ -97,8 +103,8 @@ const SignIn: React.FC = () => {
             <Input
               ref={passwordInputRef}
               name="password"
-              secureTextEntry
               icon="lock"
+              showPassword={true}
               placeholder="Senha"
               returnKeyType="send"
               onSubmitEditing={() => {
@@ -107,8 +113,15 @@ const SignIn: React.FC = () => {
             />
           </InputContainer>
           <TextContainer>
-            <Text>Lembrar-me</Text>
-            <Text> Esqueci minha senha</Text>
+            <CheckBoxContainer>
+              <CheckBox
+                value={remember}
+                onValueChange={(value) => setRemember(value)}
+              />
+
+              <TextRemember>Lembrar-me</TextRemember>
+            </CheckBoxContainer>
+            <TextForgotPassword> Esqueci minha senha</TextForgotPassword>
           </TextContainer>
         </Form>
 
