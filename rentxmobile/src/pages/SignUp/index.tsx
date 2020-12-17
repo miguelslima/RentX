@@ -20,7 +20,10 @@ import { Alert, Text, TextInput } from "react-native";
 import * as Yup from "yup";
 import getValidationErrors from "../../utils/getValidationErrors";
 
+import { useAuth } from "../../hooks/auth";
+
 interface SignUpFormData {
+  name: string;
   email: string;
   password: string;
 }
@@ -32,6 +35,8 @@ const SignUp: React.FC = () => {
   const passwordConfirmInputRef = useRef<TextInput>(null);
 
   const [fieldPassword, setFieldPassword] = useState(true);
+
+  // const { signUp } = useAuth();
 
   const handleSubmitForm = useCallback(
     async (data: SignUpFormData) => {
@@ -51,13 +56,14 @@ const SignUp: React.FC = () => {
         });
 
         // await api.post('/users', data);
+        // await signUp(data);
 
         Alert.alert(
           `🎉 Cadastro realizado 🚀`,
-          `Você já pode fazer seu logon no\n🧔GoBarber💇‍♂️️💈️!`
+          `Você já pode fazer seu logon no\nRentX!`
         );
 
-        navigation.goBack();
+        navigation.navigate("Success");
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err);

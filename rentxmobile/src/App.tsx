@@ -9,9 +9,10 @@ const App: React.FC = () => {
     <>
       <StatusBar
         translucent={false}
-        backgroundColor="#FFF"
+        backgroundColor="#FFFFFF"
         barStyle="dark-content"
       />
+
       <Routes />
     </>
   );

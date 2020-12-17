@@ -30,7 +30,7 @@ export default function Routes() {
         <Stack.Screen
           name="Success"
           component={Success}
-          // options={{ headerShown: false }}
+          options={{ headerShown: false }}
         />
       </Stack.Navigator>
     </NavigationContainer>
