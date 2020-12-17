@@ -38,35 +38,14 @@ export const Subtitle = styled.Text`
 export const InputContainer = styled.View`
   margin-top: 110px;
   padding-horizontal: 24px;
+  margin-bottom: 32px;
 `;
 
-export const TextContainer = styled.View`
-  margin: 34px 0;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding-horizontal: 24px;
-`;
-
-export const CheckBoxContainer = styled.View`
-  flex-direction: row;
-  align-items: center;
-`;
-
-export const CheckBox = styled(ReactCheckBox)``;
-
-export const TextRemember = styled.Text`
-  font-family: "Inter-Regular";
-  font-size: 13px;
-  line-height: 16px;
-  color: #737380;
-`;
-
-export const ForgotPasswordButton = styled.TouchableOpacity``;
-
-export const TextForgotPassword = styled.Text`
-  font-family: "Inter-Regular";
-  font-size: 13px;
-  line-height: 16px;
-  color: #737380;
+export const InfoText = styled.Text`
+  font-family: "Archivo-Bold";
+  color: #3d3d4d;
+  font-size: 20px;
+  line-height: 22px;
+  margin-bottom: 24px;
+  padding-left: 8px;
 `;

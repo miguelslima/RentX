@@ -12,12 +12,7 @@ import {
   Title,
   Subtitle,
   InputContainer,
-  TextContainer,
-  CheckBoxContainer,
-  CheckBox,
-  TextRemember,
-  ForgotPasswordButton,
-  TextForgotPassword,
+  InfoText,
 } from "./styles";
 import { useNavigation } from "@react-navigation/native";
 import { Alert, Text, TextInput } from "react-native";
@@ -34,6 +29,9 @@ const SignUp: React.FC = () => {
   const navigation = useNavigation();
   const formRef = useRef<FormHandles>(null);
   const passwordInputRef = useRef<TextInput>(null);
+  const passwordConfirmInputRef = useRef<TextInput>(null);
+
+  const [fieldPassword, setFieldPassword] = useState(true);
 
   const handleSubmitForm = useCallback(
     async (data: SignUpFormData) => {
@@ -90,55 +88,85 @@ const SignUp: React.FC = () => {
         </HeaderContainer>
 
         <Form ref={formRef} onSubmit={handleSubmitForm}>
-          <InputContainer>
-            <Text>1. Dados</Text>
-            <Input
-              name="nome"
-              autoCapitalize="none"
-              keyboardType="email-address"
-              autoCorrect={false}
-              icon="user"
-              placeholder="Nome"
-              returnKeyType="next"
-              onSubmitEditing={() => {
-                passwordInputRef.current?.focus();
-              }}
-            />
+          {fieldPassword ? (
+            <>
+              <InputContainer>
+                <InfoText>01. Dados</InfoText>
+                <Input
+                  name="nome"
+                  autoCapitalize="none"
+                  keyboardType="email-address"
+                  autoCorrect={false}
+                  icon="user"
+                  placeholder="Nome"
+                  returnKeyType="next"
+                  onSubmitEditing={() => {
+                    passwordInputRef.current?.focus();
+                  }}
+                />
 
-            <Input
-              name="email"
-              autoCapitalize="none"
-              keyboardType="email-address"
-              autoCorrect={false}
-              icon="mail"
-              placeholder="E-mail"
-              returnKeyType="next"
-              onSubmitEditing={() => {
-                passwordInputRef.current?.focus();
-              }}
-            />
-            {/* <Input
-              ref={passwordInputRef}
-              name="password"
-              icon="lock"
-              showPassword={true}
-              placeholder="Senha"
-              returnKeyType="send"
-              onSubmitEditing={() => {
-                formRef.current?.submitForm();
-              }}
-            /> */}
-          </InputContainer>
+                <Input
+                  name="email"
+                  autoCapitalize="none"
+                  keyboardType="email-address"
+                  autoCorrect={false}
+                  icon="mail"
+                  placeholder="E-mail"
+                  returnKeyType="next"
+                  onSubmitEditing={() => {
+                    passwordInputRef.current?.focus();
+                  }}
+                />
+              </InputContainer>
+
+              <Button
+                style={{ width: "100%" }}
+                text="Próximo"
+                enable
+                onPress={() => setFieldPassword(false)}
+              />
+            </>
+          ) : (
+            <>
+              <InputContainer>
+                <InfoText>02. Senha</InfoText>
+                <Input
+                  ref={passwordInputRef}
+                  name="password"
+                  icon="lock"
+                  showPassword={true}
+                  placeholder="Senha"
+                  returnKeyType="send"
+                  onSubmitEditing={() => {
+                    passwordConfirmInputRef.current?.focus();
+                  }}
+                />
+
+                <Input
+                  ref={passwordConfirmInputRef}
+                  name="confirmPassword"
+                  icon="lock"
+                  showPassword={true}
+                  placeholder="Repetir senha"
+                  returnKeyType="send"
+                  onSubmitEditing={() => {
+                    formRef.current?.submitForm();
+                  }}
+                />
+              </InputContainer>
+
+              <Button
+                style={{ width: "100%" }}
+                text="Cadastrar"
+                enable
+                // onPress={() => {
+                //   formRef.current?.submitForm();
+                // }}
+                onPress={() => navigation.navigate("Success")}
+              />
+            </>
+          )}
         </Form>
-
-        <Button
-          style={{ width: "100%" }}
-          text="Login"
-          enable
-          onPress={() => {
-            formRef.current?.submitForm();
-          }}
-        />
       </KeyboardAvoidingContainer>
     </Container>
   );
