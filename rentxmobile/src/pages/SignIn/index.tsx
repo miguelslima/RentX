@@ -21,7 +21,7 @@ import {
 } from "./styles";
 import { useNavigation } from "@react-navigation/native";
 import { Alert, Text, TextInput } from "react-native";
-import { useAuth } from "../../hooks/auth";
+import { useAuth } from "../../hooks/authMock";
 import * as Yup from "yup";
 import getValidationErrors from "../../utils/getValidationErrors";
 
@@ -39,42 +39,40 @@ const SignIn: React.FC = () => {
 
   const [remember, setRemember] = useState(false);
 
-  const handleSubmitForm = useCallback(async (data: SignInFormData) => {
-    try {
-      formRef.current?.setErrors({});
+  const handleSignIn = useCallback(
+    async (data: SignInFormData) => {
+      try {
+        formRef.current?.setErrors({});
 
-      const schema = Yup.object().shape({
-        email: Yup.string()
-          .email("Digite um email válido")
-          .required("Email obrigatório"),
-        password: Yup.string().required("Senha obrigatória"),
-      });
+        const schema = Yup.object().shape({
+          email: Yup.string()
+            .email('Insert an valid email')
+            .required('This field is required.'),
+          password: Yup.string().min(6, 'At least 6 digits'),
+        });
 
-      await schema.validate(data, {
-        abortEarly: false,
-      });
+        await schema.validate(data, {
+          abortEarly: false,
+        });
 
-      await signIn(data);
-      // await signIn({
-      //   email: data.email,
-      //   password: data.password,
-      // });
-    } catch (err) {
-      console.log(err)
-      if (err instanceof Yup.ValidationError) {
-        const errors = getValidationErrors(err);
+        await signIn(data);
 
-        formRef.current?.setErrors(errors);
+        navigation.reset({
+          routes: [{ name: 'Success' }],
+          index: 0,
+        });
+        console.log("ok")
+      } catch (err) {
+        console.log(err)
+        if (err instanceof Yup.ValidationError) {
+          const errors = getValidationErrors(err);
 
-        return;
+          formRef.current?.setErrors(errors);
+        }
       }
-
-      Alert.alert(
-        "Erro na autenticação",
-        `Ocorreu um erro ${err} ao fazer login, cheque as credenciais.`
-      );
-    }
-  }, []);
+    },
+    [signIn, navigation.reset],
+  );
 
   return (
     <Container>
@@ -89,7 +87,7 @@ const SignIn: React.FC = () => {
           </Subtitle>
         </HeaderContainer>
 
-        <Form ref={formRef} onSubmit={handleSubmitForm}>
+        <Form ref={formRef} onSubmit={handleSignIn}>
           <InputContainer>
             <Input
               name="email"
@@ -129,16 +127,15 @@ const SignIn: React.FC = () => {
               <TextForgotPassword> Esqueci minha senha</TextForgotPassword>
             </ForgotPasswordButton>
           </TextContainer>
+          <Button
+            style={{ width: "100%" }}
+            text="Login"
+            enable
+            onPress={() => {
+              formRef.current?.submitForm();
+            }}
+          />
         </Form>
-
-        <Button
-          style={{ width: "100%" }}
-          text="Login"
-          enable
-          onPress={() => {
-            formRef.current?.submitForm();
-          }}
-        />
       </KeyboardAvoidingContainer>
     </Container>
   );

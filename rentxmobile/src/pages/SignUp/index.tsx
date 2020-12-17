@@ -20,12 +20,13 @@ import { Alert, Text, TextInput } from "react-native";
 import * as Yup from "yup";
 import getValidationErrors from "../../utils/getValidationErrors";
 
-import { useAuth } from "../../hooks/auth";
+import { useAuth } from "../../hooks/authMock";
 
 interface SignUpFormData {
-  name: string;
+  nome: string;
   email: string;
   password: string;
+  test?: string[];
 }
 
 const SignUp: React.FC = () => {
@@ -34,29 +35,35 @@ const SignUp: React.FC = () => {
   const passwordInputRef = useRef<TextInput>(null);
   const passwordConfirmInputRef = useRef<TextInput>(null);
 
+  const [nome, setNome] = useState("");
+  const [email, setEmail] = useState("");
+
   const [fieldPassword, setFieldPassword] = useState(true);
 
-  // const { signUp } = useAuth();
+  const { signUp } = useAuth();
 
   const handleSubmitForm = useCallback(
     async (data: SignUpFormData) => {
+      // console.log({ ...data, nome, email });
+
+      data = { ...data, nome, email };
+      console.log(data);
       try {
         formRef.current?.setErrors({});
 
         const schema = Yup.object().shape({
-          name: Yup.string().required("Nome obrigatório"),
+          nome: Yup.string().required("Nome obrigatório"),
           email: Yup.string()
             .required("E-mail obrigatório")
             .email("Digite um e-mail válido"),
           password: Yup.string().min(6, "No mínimo 06 dígitos"),
         });
-        console.log(data);
         await schema.validate(data, {
           abortEarly: false,
         });
 
         // await api.post('/users', data);
-        // await signUp(data);
+        await signUp(data);
 
         Alert.alert(
           `🎉 Cadastro realizado 🚀`,
@@ -106,9 +113,9 @@ const SignUp: React.FC = () => {
                   icon="user"
                   placeholder="Nome"
                   returnKeyType="next"
-                  onSubmitEditing={() => {
-                    passwordInputRef.current?.focus();
-                  }}
+                  // onSubmitEditing={() => {
+                  //   passwordInputRef.current?.focus();
+                  // }}
                 />
 
                 <Input
@@ -119,9 +126,9 @@ const SignUp: React.FC = () => {
                   icon="mail"
                   placeholder="E-mail"
                   returnKeyType="next"
-                  onSubmitEditing={() => {
-                    passwordInputRef.current?.focus();
-                  }}
+                  // onSubmitEditing={() => {
+                  //   passwordInputRef.current?.focus();
+                  // }}
                 />
               </InputContainer>
 
@@ -129,7 +136,11 @@ const SignUp: React.FC = () => {
                 style={{ width: "100%" }}
                 text="Próximo"
                 enable
-                onPress={() => setFieldPassword(false)}
+                onPress={() => {
+                  setNome(formRef.current?.getFieldValue("nome"));
+                  setEmail(formRef.current?.getFieldValue("email"));
+                  setFieldPassword(false);
+                }}
               />
             </>
           ) : (
@@ -165,10 +176,12 @@ const SignUp: React.FC = () => {
                 style={{ width: "100%" }}
                 text="Cadastrar"
                 enable
-                // onPress={() => {
-                //   formRef.current?.submitForm();
-                // }}
-                onPress={() => navigation.navigate("Success")}
+                onPress={() => {
+                  setNome(nome);
+                  setEmail(email);
+                  formRef.current?.submitForm();
+                }}
+                // onPress={() => navigation.navigate("Success")}
               />
             </>
           )}
