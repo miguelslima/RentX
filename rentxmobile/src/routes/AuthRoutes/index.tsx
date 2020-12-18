@@ -7,8 +7,6 @@ import SignIn from "../../pages/SignIn";
 import SignUp from "../../pages/SignUp";
 import Success from "../../pages/SignUp/Success";
 
-import HomeTabs from "../HomeTabs";
-
 const Auth = createStackNavigator();
 
 const AuthRoutes: React.FC = () => (

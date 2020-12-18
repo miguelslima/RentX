@@ -31,7 +31,7 @@ interface SignInFormData {
 }
 
 const SignIn: React.FC = () => {
-  const navigation = useNavigation();
+  const { navigate, goBack } = useNavigation();
   const formRef = useRef<FormHandles>(null);
   const passwordInputRef = useRef<TextInput>(null);
 
@@ -57,9 +57,7 @@ const SignIn: React.FC = () => {
 
         await signIn(data);
 
-        navigation.navigate("HomeTabs")
-
-
+        navigate("HomeTabs");
       } catch (err) {
         console.log(err);
         if (err instanceof Yup.ValidationError) {
@@ -69,13 +67,13 @@ const SignIn: React.FC = () => {
         }
       }
     },
-    [signIn, navigation.reset]
+    [signIn]
   );
 
   return (
     <Container>
       <KeyboardAvoidingContainer behavior="position">
-        <GoBack onPress={() => navigation.goBack()}>
+        <GoBack onPress={() => goBack()}>
           <Icon size={20} name="chevron-left" color="#AEAEB3" />
         </GoBack>
         <HeaderContainer>
