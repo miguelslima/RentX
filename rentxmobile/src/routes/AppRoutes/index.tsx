@@ -3,7 +3,8 @@ import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 
 import HomeTabs from "./HomeTabs";
-import Home from "../../pages/Home";
+import Profile from "../../pages/Profile";
+import Success from "../../pages/SignUp/Success";
 
 const App = createStackNavigator();
 
@@ -14,7 +15,6 @@ const AppRoutes: React.FC = () => (
       cardStyle: { backgroundColor: "#F9F9F9" },
     }}
   >
-    {/* <App.Screen name="Home" component={Home} /> */}
     <App.Screen name="HomeTabs" component={HomeTabs} />
   </App.Navigator>
 );
