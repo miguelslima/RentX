@@ -47,7 +47,7 @@ const SignUp: React.FC = () => {
       // console.log({ ...data, nome, email });
 
       data = { ...data, nome, email };
-      console.log(data);
+      console.log("data " + data);
       try {
         formRef.current?.setErrors({});
 
@@ -63,7 +63,7 @@ const SignUp: React.FC = () => {
         });
 
         // await api.post('/users', data);
-        await signUp(data);
+        await signUp({ ...data, nome, email });
 
         Alert.alert(
           `🎉 Cadastro realizado 🚀`,
@@ -145,6 +145,8 @@ const SignUp: React.FC = () => {
             </>
           ) : (
             <>
+              {console.log(nome)}
+              {console.log(email)}
               <InputContainer>
                 <InfoText>02. Senha</InfoText>
                 <Input

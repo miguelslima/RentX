@@ -1,9 +1,10 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Icon from "react-native-vector-icons/Feather";
-import IconI from 'react-native-vector-icons/Ionicons'
+import IconI from "react-native-vector-icons/Ionicons";
 
 import Home from "../pages/Home";
+import Profile from "../pages/Profile";
 // import Notes from '../pages/Notes';
 // import BuyList from '../pages/BuyList';
 // import Account from '../pages/Account';
@@ -81,7 +82,7 @@ const HomeTabs: React.FC = () => {
       />
       <Screen
         name="Conta"
-        component={Home}
+        component={Profile}
         options={{
           tabBarLabel: "",
           tabBarIcon: ({ color, size, focused }) => {

@@ -46,9 +46,9 @@ const SignIn: React.FC = () => {
 
         const schema = Yup.object().shape({
           email: Yup.string()
-            .email('Insert an valid email')
-            .required('This field is required.'),
-          password: Yup.string().min(6, 'At least 6 digits'),
+            .email("Insert an valid email")
+            .required("This field is required."),
+          password: Yup.string().min(6, "At least 6 digits"),
         });
 
         await schema.validate(data, {
@@ -57,13 +57,11 @@ const SignIn: React.FC = () => {
 
         await signIn(data);
 
-        navigation.reset({
-          routes: [{ name: 'Success' }],
-          index: 0,
-        });
-        console.log("ok")
+        navigation.navigate("HomeTabs")
+
+
       } catch (err) {
-        console.log(err)
+        console.log(err);
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err);
 
@@ -71,7 +69,7 @@ const SignIn: React.FC = () => {
         }
       }
     },
-    [signIn, navigation.reset],
+    [signIn, navigation.reset]
   );
 
   return (

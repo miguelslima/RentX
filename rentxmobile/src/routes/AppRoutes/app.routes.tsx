@@ -3,6 +3,7 @@ import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 
 import HomeTabs from "../HomeTabs";
+import Home from "../../pages/Home";
 
 const App = createStackNavigator();
 
