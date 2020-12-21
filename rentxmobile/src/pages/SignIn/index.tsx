@@ -57,7 +57,7 @@ const SignIn: React.FC = () => {
 
         await signIn(data);
 
-        navigate("HomeTabs");
+        navigate("SelectDate");
       } catch (err) {
         console.log(err);
         if (err instanceof Yup.ValidationError) {

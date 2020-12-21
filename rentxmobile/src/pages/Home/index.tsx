@@ -5,7 +5,7 @@ import { Text, View } from "react-native";
 
 const Home: React.FC = () => {
   return (
-    <View>
+    <View style={{ flex: 1 }}>
       <Text>Home</Text>
     </View>
   );
