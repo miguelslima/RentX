@@ -1,11 +1,13 @@
 import styled from "styled-components/native";
 
 export const Container = styled.View`
-  background-color: #1b1b1f;
   flex: 1;
 `;
 
-export const ContainerHeader = styled.View``;
+export const ContainerHeader = styled.View`
+  margin-bottom: 40px;
+  background-color: #1b1b1f;
+`;
 
 export const Title = styled.Text`
   width: 218px;
@@ -24,24 +26,32 @@ export const ChooseDateContainer = styled.View`
   margin-horizontal: 24px;
 `;
 
-export const Border = styled.View`
+export const Border = styled.Text`
   border-bottom-width: 1px;
   border-bottom-color: #7a7a80;
+  color: #FFF;
   width: 104px;
-  height: 18px;
+  height: 20px;
+  margin-bottom: 40px;
 `;
 
 export const ChooseDateText = styled.Text`
   color: #7a7a80;
   font-family: "Archivo-Regular";
-  font-size: 11px;
-  line-height: 11px;
+  font-size: 12px;
+  line-height: 12px;
 `;
 
 export const ChooseDateOf = styled.View`
-  flex: 0.5;
+  width: 105px;
 `;
 
 export const ChooseDateTo = styled.View`
-  flex: 0.5;
+  width: 105px;
 `;
+
+export const CalendarContainer = styled.View`
+  background-color: #fff;
+`;
+
+export const Calendar = styled.View``;
