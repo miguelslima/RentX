@@ -1,13 +1,35 @@
 import React from "react";
 import { Text, View } from "react-native";
 
-import { Container } from './styles';
+import {
+  Container,
+  Title,
+  ContainerHeader,
+  ChooseDateContainer,
+  Border,
+  ChooseDateText,
+  ChooseDateOf,
+  ChooseDateTo,
+} from "./styles";
 
 const SelectDate: React.FC = () => {
   return (
-    <View>
-      <Text>Escolha a data e encontre um carro.</Text>
-    </View>
+    <Container>
+      <ContainerHeader>
+        <Title>Escolha a data e encontre um carro.</Title>
+        <ChooseDateContainer>
+          <ChooseDateOf>
+            <ChooseDateText>De</ChooseDateText>
+            <Border />
+          </ChooseDateOf>
+
+          <ChooseDateTo>
+            <ChooseDateText>Até</ChooseDateText>
+            <Border />
+          </ChooseDateTo>
+        </ChooseDateContainer>
+      </ContainerHeader>
+    </Container>
   );
 };
 
