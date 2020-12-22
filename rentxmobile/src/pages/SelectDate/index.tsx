@@ -21,10 +21,14 @@ import {
   CalendarContainer,
   Calendar,
 } from "./styles";
+import Button from "../../components/Button";
+import { useNavigation } from "@react-navigation/native";
 
 moment.locale("pt-br");
 
 const SelectDate: React.FC = () => {
+  const navigation = useNavigation();
+
   const [selectedDate, setSelectedDate] = useState({
     start: "",
     end: "",
@@ -59,9 +63,7 @@ const SelectDate: React.FC = () => {
         <ChooseDateContainer>
           <ChooseDateOf>
             <ChooseDateText>De</ChooseDateText>
-            <Border>
-              {selectedDate.start}
-            </Border>
+            <Border>{selectedDate.start}</Border>
           </ChooseDateOf>
 
           <View>
@@ -70,9 +72,7 @@ const SelectDate: React.FC = () => {
 
           <ChooseDateTo>
             <ChooseDateText>Até</ChooseDateText>
-            <Border>
-              {selectedDate.end}
-            </Border>
+            <Border>{selectedDate.end}</Border>
           </ChooseDateTo>
         </ChooseDateContainer>
       </ContainerHeader>
@@ -86,7 +86,7 @@ const SelectDate: React.FC = () => {
             startFromMonday
             allowRangeSelection
             textStyle={{
-              fontFamily: "Inter_400Regular",
+              fontFamily: "Inter-Regular",
               fontSize: 15,
               color: "#47474d",
             }}
@@ -95,7 +95,7 @@ const SelectDate: React.FC = () => {
             customDayHeaderStyles={() => {
               return {
                 textStyle: {
-                  fontFamily: "Archivo_600SemiBold",
+                  fontFamily: "Archivo-SemiBold",
                   fontSize: 10,
                   color: "#AEAEB3",
                 },
@@ -131,6 +131,21 @@ const SelectDate: React.FC = () => {
           />
         </Calendar>
       </CalendarContainer>
+      <View
+        style={{
+          marginTop: 25,
+          height: 56,
+          flexDirection: "row",
+          justifyContent: "center",
+          alignContent: "center",
+        }}
+      >
+        <Button
+          style={{ width: 330 }}
+          text="Confirmar"
+          onPress={() => navigation.navigate("HomeTabs")}
+        />
+      </View>
     </Container>
   );
 };

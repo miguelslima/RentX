@@ -2,6 +2,7 @@ import styled from "styled-components/native";
 
 export const Container = styled.View`
   flex: 1;
+
 `;
 
 export const ContainerHeader = styled.View`
@@ -29,7 +30,7 @@ export const ChooseDateContainer = styled.View`
 export const Border = styled.Text`
   border-bottom-width: 1px;
   border-bottom-color: #7a7a80;
-  color: #FFF;
+  color: #fff;
   width: 104px;
   height: 20px;
   margin-bottom: 40px;
