@@ -5,9 +5,8 @@ import IconI from "react-native-vector-icons/Ionicons";
 
 import Home from "../../pages/Home";
 import Profile from "../../pages/Profile";
-// import Notes from '../pages/Notes';
-// import BuyList from '../pages/BuyList';
-// import Account from '../pages/Account';
+import Scheduling from "../../pages/Scheduling";
+import ListCars from "../../pages/ListCars";
 
 const { Navigator, Screen } = createBottomTabNavigator();
 
@@ -49,8 +48,8 @@ const HomeTabs: React.FC = () => {
         }}
       />
       <Screen
-        name="Enviar nota"
-        component={Home}
+        name="Listagem"
+        component={ListCars}
         options={{
           tabBarLabel: "",
           tabBarIcon: ({ color, size, focused }) => {
@@ -65,8 +64,8 @@ const HomeTabs: React.FC = () => {
         }}
       />
       <Screen
-        name="Minhas Listas"
-        component={Home}
+        name="Agendamento"
+        component={Scheduling}
         options={{
           tabBarLabel: "",
           tabBarIcon: ({ color, size, focused }) => {
