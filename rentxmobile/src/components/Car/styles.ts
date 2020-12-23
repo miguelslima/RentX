@@ -6,9 +6,11 @@ interface CarImageDotProps {
 
 export const Container = styled.View`
   height: 250px;
-  margin: 16px 24px 0;
+  margin: 16px 24px;
   padding: 24px;
   background-color: #f4f5f6;
+  elevation: 3;
+
 `;
 
 export const Header = styled.View`
