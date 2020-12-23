@@ -1,5 +1,9 @@
 import styled from "styled-components/native";
 
+interface CarImageDotProps {
+  isSelected?: boolean;
+}
+
 export const Container = styled.View`
   height: 250px;
   margin: 16px 24px 0;
@@ -40,4 +44,13 @@ export const Price = styled.Text`
   font-family: "Archivo-Regular";
   color: #dc1637;
   margin-top: 4px;
+`;
+
+export const Dot = styled.View<CarImageDotProps>`
+  margin-left: 8px;
+  height: 4px;
+  width: 4px;
+  border-radius: 4px;
+  /* background-color: #3d3d4d; */
+  background-color: ${(props) => (props.isSelected ? "#3d3d4d" : "#c9c9d4")};
 `;

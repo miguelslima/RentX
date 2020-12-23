@@ -59,6 +59,8 @@ const Home: React.FC = () => {
       </SearchContainer>
 
       <Car brand="Lamborghini" name="Huracan" daily_price={580} />
+      <Car brand="Volvo" name="XC40" daily_price={280} />
+      <Car brand="Honda" name="Civic" daily_price={80} />
     </Container>
   );
 };
