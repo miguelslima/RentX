@@ -2,6 +2,7 @@ import styled from "styled-components/native";
 
 export const Container = styled.View`
   flex: 1;
+  background-color: #fff;
 `;
 
 export const ContainerHeader = styled.View`
@@ -56,7 +57,6 @@ export const SearchText = styled.Text`
 export const FilterContainer = styled.View`
   flex-direction: row;
   align-items: center;
-
 `;
 export const FindCars = styled.Text`
   font-family: "Inter-Regular";

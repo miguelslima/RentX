@@ -18,6 +18,7 @@ import {
   FindCars,
 } from "./styles";
 import { useNavigation } from "@react-navigation/native";
+import Car from "../../components/Car";
 
 moment.locale("pt-br");
 
@@ -56,6 +57,8 @@ const Home: React.FC = () => {
           <Icon name="filter" size={20} color="#47474D" />
         </FilterContainer>
       </SearchContainer>
+
+      <Car brand="Lamborghini" name="Huracan" daily_price={580} />
     </Container>
   );
 };
