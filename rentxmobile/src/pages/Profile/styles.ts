@@ -78,7 +78,12 @@ export const FavoriteCarText = styled.Text`
   color: #7a7a80;
   font-size: 15px;
   line-height: 18px;
-  font-family: "Inter-Regular"
+  font-family: "Inter-Regular";
 `;
 
-export const FavoriteCarNumber = styled.Text``;
+export const FavoriteCarNumber = styled.Text`
+  font-family: "Archivo-Medium";
+  font-size: 15px;
+  line-height: 16px;
+  color: #47474d;
+`;

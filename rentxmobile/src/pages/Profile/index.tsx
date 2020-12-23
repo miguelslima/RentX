@@ -1,6 +1,7 @@
 import React from "react";
 import { Alert, Text, View } from "react-native";
-import Button from "../../components/Button";
+
+import ListingCars from "../../components/ListingCars";
 
 import Icon from "react-native-vector-icons/AntDesign";
 
@@ -64,6 +65,8 @@ const Profile: React.FC = () => {
         <FavoriteCarText>Carro favorito</FavoriteCarText>
         <FavoriteCarNumber>Utilizado 2 vezes</FavoriteCarNumber>
       </FavoriteCarContainer>
+
+      <ListingCars />
     </Container>
   );
 };
