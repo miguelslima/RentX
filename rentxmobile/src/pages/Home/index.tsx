@@ -19,11 +19,14 @@ import {
 } from "./styles";
 import { useNavigation } from "@react-navigation/native";
 import Car from "../../components/Car";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import FiltersCar from "../../components/FiltersCar";
 
 moment.locale("pt-br");
 
 const Home: React.FC = () => {
   const navigation = useNavigation();
+  const [openModal, setOpenModal] = useState(false);
 
   const [selectedDate, setSelectedDate] = useState({
     start: "",
@@ -50,17 +53,23 @@ const Home: React.FC = () => {
         </ChooseDateContainer>
       </ContainerHeader>
 
+      <FiltersCar showModal={openModal} />
+
       <SearchContainer>
         <SearchText>Resultados</SearchText>
         <FilterContainer>
           <FindCars>3 carros</FindCars>
-          <Icon name="filter" size={20} color="#47474D" />
+          <TouchableOpacity onPress={() => setOpenModal(!openModal)}>
+            <Icon name="filter" size={20} color="#47474D" />
+          </TouchableOpacity>
         </FilterContainer>
       </SearchContainer>
 
-      <Car brand="Lamborghini" name="Huracan" daily_price={580} />
-      <Car brand="Volvo" name="XC40" daily_price={280} />
-      <Car brand="Honda" name="Civic" daily_price={80} />
+      {/* <View>
+        <Car brand="Lamborghini" name="Huracan" daily_price={580} />
+        <Car brand="Volvo" name="XC40" daily_price={280} />
+        <Car brand="Honda" name="Civic" daily_price={80} />
+      </View> */}
     </Container>
   );
 };

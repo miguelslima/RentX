@@ -4,6 +4,8 @@ import { Alert, Text, View } from "react-native";
 import ListingCars from "../../components/ListingCars";
 
 import Icon from "react-native-vector-icons/AntDesign";
+import IconEletric from "react-native-vector-icons/SimpleLineIcons";
+import IconLeaf from "react-native-vector-icons/FontAwesome5";
 
 import { useAuth } from "../../hooks/authMock";
 
@@ -65,7 +67,8 @@ const Profile: React.FC = () => {
         <FavoriteCarText>Carro favorito</FavoriteCarText>
         <FavoriteCarNumber>Utilizado 2 vezes</FavoriteCarNumber>
       </FavoriteCarContainer>
-
+      <IconEletric name="energy" size={30} />
+      <IconLeaf name="leaf" size={30} />
       <ListingCars />
     </Container>
   );
