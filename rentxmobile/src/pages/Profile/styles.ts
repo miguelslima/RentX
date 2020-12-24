@@ -1,6 +1,9 @@
 import styled from "styled-components/native";
 
-export const Container = styled.View``;
+export const Container = styled.View`
+  background-color: #fff;
+  flex: 1;
+`;
 
 export const HeaderContainer = styled.View`
   flex-direction: row;
@@ -36,11 +39,14 @@ export const ButtonEdit = styled.TouchableOpacity``;
 export const ButtonSignOut = styled.TouchableOpacity``;
 
 export const Name = styled.Text`
+  width: 177px;
+
   font-family: "Archivo-Bold";
   font-size: 30px;
   line-height: 33px;
   color: #3d3d4d;
   text-align: center;
+  align-self: center;
 `;
 
 export const SchedulingContainer = styled.View`
