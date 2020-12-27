@@ -24,7 +24,7 @@ import FiltersCar from "../../components/FiltersCar";
 
 moment.locale("pt-br");
 
-const Home: React.FC = () => {
+const Home: React.FC = (props) => {
   const navigation = useNavigation();
   const [openModal, setOpenModal] = useState(false);
 
@@ -32,6 +32,8 @@ const Home: React.FC = () => {
     start: "",
     end: "",
   });
+
+  console.log(props);
 
   return (
     <Container>

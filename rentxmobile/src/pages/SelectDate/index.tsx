@@ -56,6 +56,10 @@ const SelectDate: React.FC = () => {
     return <Icon name={`chevron-${direction}`} color="#7A7A80" size={20} />;
   }
 
+  function handleConfirmDate(startDate: any, endDate: any) {
+    navigation.navigate("HomeTabs", { startDate, endDate });
+  }
+
   return (
     <Container>
       <ContainerHeader>
@@ -143,7 +147,9 @@ const SelectDate: React.FC = () => {
         <Button
           style={{ width: 330 }}
           text="Confirmar"
-          onPress={() => navigation.navigate("HomeTabs")}
+          onPress={() =>
+            handleConfirmDate(selectedDate.start, selectedDate.end)
+          }
         />
       </View>
     </Container>

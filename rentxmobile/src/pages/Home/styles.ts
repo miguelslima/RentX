@@ -6,6 +6,7 @@ export const Container = styled.ScrollView`
 `;
 
 export const ContainerHeader = styled.View`
+  width: 100%;
   margin-bottom: 40px;
   background-color: #1b1b1f;
 `;

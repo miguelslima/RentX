@@ -1,7 +1,8 @@
 import React from "react";
 import { Text, View } from "react-native";
+import Button from "../Button";
 
-import { Container, ModalContainer } from "./styles";
+import { Container, ModalContainer, Line } from "./styles";
 
 interface FiltersModalProps {
   showModal: boolean;
@@ -14,6 +15,10 @@ const FiltersCar: React.FC<FiltersModalProps> = ({ showModal }) => {
       <Container>
         <ModalContainer>
           <Text>Filtro</Text>
+
+          <Line />
+
+          <Button onPress={() => {}} text="Confirmar" />
         </ModalContainer>
       </Container>
     );
